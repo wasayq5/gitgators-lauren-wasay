@@ -20,6 +20,48 @@ body {
     padding-top: 10px;
 }
 
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li {
+    display: inline-block;
+    position: relative;
+}
+
+.nav-menu li.has-submenu:hover .sub-menu {
+    display: block;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 10px;
+    min-width: 120px;
+    z-index: 1;
+}
+
+.nav-menu > ul {
+    position: relative;
+}
+
+.sub-menu {
+    top: calc(100%);
+    left: 0;
+    right: 0;
+}
+
 .nav-content .logo-touch-target {
     display: inline-flex;
     height: 60%;
@@ -44,7 +86,7 @@ body {
 .nav-content nav {
     display: block;
     width: 100%;
-    text-align: right;
+    text-align: left;
     padding-top: 0px;
     padding-right: 0px;
 }
