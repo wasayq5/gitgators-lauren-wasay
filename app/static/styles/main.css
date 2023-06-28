@@ -137,3 +137,8 @@ body {
     font-size: 50px;
     font-weight: 700;
 }
+
+.hobby img {
+    width: 200px;
+    height: 200px;
+}
