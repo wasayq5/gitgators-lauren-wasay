@@ -14,9 +14,9 @@ def index():
 @app.route('/work')
 def work():
     work_experiences = [
-        {'company': 'Company A', 'position': 'Position A', 'duration': '2010-2012'},
-        {'company': 'Company B', 'position': 'Position B', 'duration': '2013-2015'},
-        {'company': 'Company C', 'position': 'Position C', 'duration': '2016-2018'}
+        {'company': 'Cadence', 'position': 'Application Engineer', 'duration': 'Jun 2023 - Present'},
+        {'company': 'Intel', 'position': 'Firmware Validation Engineering and SSD Technical Intern', 'duration': 'June 2020 - Dec 2021'},
+        {'company': 'NASA', 'position': 'Public Education and Outreach Intern', 'duration': 'Aug - Dec 2018'}
     ]
     return render_template('work.html', title="MLH Fellow", url=os.getenv("URL"), work_experiences=work_experiences)
 
@@ -24,9 +24,9 @@ def work():
 @app.route('/education')
 def education():
     school_experiences = [
-        {'school': 'School A', 'degree': 'Degree A', 'duration': '2010-2012'},
-        {'school': 'School B', 'degree': 'Degree B', 'duration': '2013-2015'},
-        {'school': 'School C', 'degree': 'Degree C', 'duration': '2016-2018'}
+        {'school': 'CSU Sacramento', 'degree': 'Electrical and Electronics Engineering - BS', 'duration': '2019 - 2023'},
+        {'school': 'Sacramento City College', 'degree': 'Electrical and Electronics Engineering - AS', 'duration': '2018'},
+        {'school': 'Fresno City College', 'degree': 'Electrical and Electronics Engineering - AS', 'duration': '2016 - 2018'}
     ]
     return render_template('education.html', title="MLH Fellow", url=os.getenv("URL"),
                            school_experiences=school_experiences)
@@ -35,8 +35,8 @@ def education():
 @app.route('/hobbies')
 def hobbies():
     hobby_experiences = [
-        {'type': 'Hobby A', 'description': 'Description A', 'image': './img/hobbies/hobby_image1.jpeg'},
-        {'type': 'Hobby B', 'description': 'Description B', 'image': './img/hobbies/hobby_image2.jpg'},
-        {'type': 'Hobby C', 'description': 'Description C', 'image': './img/hobbies/hobby_image3.jpeg'}
+        {'type': 'Tarantula Husbandry', 'description': 'I like to collect and take care of tarantulas! I currently have 5 species of New World Tarantulas.', 'image': './img/hobbies/hobby_image1.jpeg'},
+        {'type': 'Drinking Coffee', 'description': 'I love coffee! My favorite drink right now is an iced vanilla latte.', 'image': './img/hobbies/hobby_image2.jpg'},
+        {'type': 'Growing Plants', 'description': 'Plants are very cute! I want to start my own garden, but for now I am just sticking to indoor plants.', 'image': './img/hobbies/hobby_image3.jpeg'}
     ]
     return render_template('hobbies.html', title="MLH Fellow", url=os.getenv("URL"), hobby_experiences=hobby_experiences)

@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="about-yourself">
+    <div class="about-yourself">
         <h2>{{"About Myself"}}</h2>
-        <p>The quick brown fox jumps over the lazy dog.</p>
+        <p> Hi there, my name is Lauren. I'm possibly coding, but probably blowing up a circuit.</p>
+    </div>
+    <br>
+    <div class="map">
+        <h2>{{"Places I've Been"}}</h2>
+        <iframe src="https://visitedplaces.com/embed/?map=usa&projection=geoAlbersUsa&theme=dark-green&water=0&graticule=0&names=1&duration=2000&placeduration=100&slider=0&autoplay=0&autozoom=none&autostep=0&home=US&places=~US-AL_US-CA_US-DC_US-MD_US-TX_US-VA_US-WA_US-OR_US-NV" style="width: 80%; height: 400px;"></iframe>
+        <p> USA: California, Nevada, Texas, Maryland, DC, Virginia, Alabama, Oregon, Washington</p>
+        <p> Canada: Victoria, Vancouver</p>
     </div>
 {% endblock %}
