@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Education</h1>
+
+    <ul>
+        {% for experience in school_experiences %}
+            <li>
+                <h2>{{ experience.school }}</h2>
+                <p>{{ experience.degree }}</p>
+                <p>{{ experience.duration }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

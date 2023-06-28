@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Work Experience</h1>
+
+    <ul>
+        {% for experience in work_experiences %}
+            <li>
+                <h2>{{ experience.company }}</h2>
+                <p>{{ experience.position }}</p>
+                <p>{{ experience.duration }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
