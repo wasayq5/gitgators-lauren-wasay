@@ -4,7 +4,7 @@
 
 <h1>Timeline Posts</h1>
 <h2>Create Post</h2>
-<form action="/api/timeline_post" method="POST">
+<form id="timeline-post-form" action="/api/timeline_post" method="POST">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br>
 
@@ -18,10 +18,85 @@
 </form>
 
 <h2>Post History</h2>
-<ul>
+<ul id="timeline-post-list">
     {% for post in timeline_posts %}
-        <li>{{ post.name }} - {{ post.content }}</li>
+        <li>{{ post.name }} ({{ post.email }}): {{ post.content }}</li>
     {% endfor %}
 </ul>
 
+<script>
+    // Find the form element
+    const form = document.getElementById('timeline-post-form');
+
+    // Find the timeline post list element
+    const timelinePostList = document.getElementById('timeline-post-list');
+
+    // Add an event listener to the form submit event
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();  // Prevent default form submission
+
+        // Get the form data
+        const formData = new FormData(form);
+
+        // Create a new request to submit the form data
+        const request = new XMLHttpRequest();
+        request.open('POST', '/api/timeline_post');
+        request.send(formData);
+
+        // Handle the response
+        request.onload = function () {
+            if (request.status === 200) {
+                // Form submission successful
+                // Optionally, you can perform additional actions or display a success message
+
+                // Clear the form inputs
+                form.reset();
+
+                // Refresh the timeline post list
+                refreshTimelinePosts();
+            } else {
+                // Form submission failed
+                // Optionally, you can display an error message or handle the error
+            }
+        };
+    });
+
+    // Function to refresh the timeline post list
+    // Function to refresh the timeline post list
+function refreshTimelinePosts() {
+    // Create a new request to fetch the latest timeline posts
+    const request = new XMLHttpRequest();
+    request.open('GET', '/api/timeline_post');
+    request.send();
+
+    // Handle the response
+    request.onload = function () {
+        if (request.status === 200) {
+            // Parse the response as JSON
+            const response = JSON.parse(request.responseText);
+            const timelinePosts = response.timeline_posts;
+
+            // Build the HTML content for the timeline post list
+            let htmlContent = '';
+            for (const post of timelinePosts) {
+                const name = post.name;
+                const email = post.email;
+                const content = post.content;
+                htmlContent += `<li><b>${name}</b> (${email}): ${content}</li>`;
+            }
+
+            // Update the timeline post list with the latest data
+            timelinePostList.innerHTML = htmlContent;
+        } else {
+            // Handle the error
+        }
+    };
+}
+
+
+    // Initial call to fetch and display the timeline posts on page load
+    refreshTimelinePosts();
+</script>
+
 {% endblock %}
+
