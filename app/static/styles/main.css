@@ -14,7 +14,7 @@ body {
 .nav-bar {
     width: 100%;
     display: inline-block;
-    background-color: #1C539F;
+    background-color: #816060;
     font-family: "Roboto", serif;
     font-weight: 700 !important;
     padding-top: 10px;
@@ -46,7 +46,7 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #fff;
+    background-color: #1d539f;
     padding: 10px;
     min-width: 120px;
     z-index: 1;
@@ -92,7 +92,7 @@ body {
 }
 
 .profile {
-    background-color: #1d539f !important;
+    background-color: #ae8f8c !important;
     text-align: center;
     height: 320px;
     margin-bottom: 50px;
@@ -115,7 +115,7 @@ body {
 }
 
 .profile .profile-picture {
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     height: 200px;
 }
 
