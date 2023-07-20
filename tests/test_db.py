@@ -3,7 +3,7 @@ import unittest
 from peewee import *
 from app import TimelinePost
 
-MODELS = [Timeline Post]
+MODELS = [TimelinePost]
 
 test_db = SqliteDatabase(':memory:')
 
