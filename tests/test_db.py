@@ -19,21 +19,21 @@ class TestTimelinePost(unittest.TestCase):
 
     def test_timeline_post(self):
         # Create two timeline posts for testing
-    first_post = TimelinePost.create(name='John Doe', email='john@example.com', content="Hello world, I'm John.")
-    second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content="Hello World, I'm Jane")
+        first_post = TimelinePost.create(name='John Doe', email='john@example.com', content="Hello world, I'm John.")
+        second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content="Hello World, I'm Jane")
 
-    # Fetch the timeline posts
-    timeline_posts = TimelinePost.query.all()
+        # Fetch the timeline posts
+        timeline_posts = TimelinePost.query.all()
 
-    # Perform assertions
-    assert len(timeline_posts) == 2
+        # Perform assertions
+        assert len(timeline_posts) == 2
 
-    assert timeline_posts[0].id == 1
-    assert timeline_posts[0].name == first_post.name
-    assert timeline_posts[0].email == first_post.email
-    assert timeline_posts[0].content == first_post.content
+        assert timeline_posts[0].id == 1
+        assert timeline_posts[0].name == first_post.name
+        assert timeline_posts[0].email == first_post.email
+        assert timeline_posts[0].content == first_post.content
 
-    assert timeline_posts[1].id == 2
-    assert timeline_posts[1].name == second_post.name
-    assert timeline_posts[1].email == second_post.email
-    assert timeline_posts[1].content == second_post.content
+        assert timeline_posts[1].id == 2
+        assert timeline_posts[1].name == second_post.name
+        assert timeline_posts[1].email == second_post.email
+        assert timeline_posts[1].content == second_post.content
