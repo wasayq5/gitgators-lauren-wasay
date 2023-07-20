@@ -2,8 +2,8 @@
 import unittest
 from peewee import *
 from app import TimelinePost
-import requests
-import json
+# import requests
+# import json
 
 MODELS = [TimelinePost]
 
