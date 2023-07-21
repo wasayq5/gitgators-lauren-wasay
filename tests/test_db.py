@@ -14,22 +14,20 @@ class TestTimelinePost(unittest.TestCase):
         test_db.bind(MODELS, bind_refs=False, bind_backrefs=False)
         test_db.connect()
         test_db.create_tables(MODELS)
-        first_post = TimelinePost.create(name='John Doe', email='john@exampele.com', content='Hello world, I\'m John.')
-        second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello World, I\'m Jane')
 
     def tearDown(self):
         test_db.drop_tables(MODELS)
         test_db.close()
 
-    # def clear_timeline_posts(self):
-    #     # Clear all records from the TimelinePost table
-    #     TimelinePost.delete().execute()
+    def clear_timeline_posts(self):
+        # Clear all records from the TimelinePost table
+        TimelinePost.delete().execute()
 
     def test_timeline_post(self):
         first_post = TimelinePost.create(name='John Doe', email='john@exampele.com', content='Hello world, I\'m John.')
-        assert first_post.id == 3
+        assert first_post.id == 1
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello World, I\'m Jane')
-        assert second_post.id == 4
+        assert second_post.id == 2
 
         # Get the timeline posts using the API endpoint
         response = requests.get('http://198.199.86.119:5000/api/timeline_post')  
