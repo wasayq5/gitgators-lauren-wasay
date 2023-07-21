@@ -56,7 +56,7 @@ def post_time_line_post():
 
     timeline_post=TimelinePost.create(name=name,email=email,content=content)
 
-    return model_to_dict(timeline_post)
+    return model_to_dict(timeline_post), 201
 
 @app.route('/api/timeline_post', methods=['GET'])
 def get_time_line_post():
@@ -82,7 +82,7 @@ def timeline():
 
         if not content:
             return "Invalid content", 400
-            
+
         timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
     timeline_posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
