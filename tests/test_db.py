@@ -79,4 +79,4 @@ class TestTimelinePost(unittest.TestCase):
         self.assertEqual(timeline_posts[1].id, 2)
         self.assertEqual(timeline_posts[1].name, 'Jane Doe')
         self.assertEqual(timeline_posts[1].email, 'jane@example.com')
-        self.assertEqual(timeline_posts[1].content, "Hello World, I'm Jane.")
+        self.assertEqual(timeline_posts[1].content, "Hello World, I'm Jane")
