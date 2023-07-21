@@ -29,40 +29,6 @@ class TestTimelinePost(unittest.TestCase):
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello World, I\'m Jane')
         assert second_post.id == 2
 
-        # # Get the timeline posts using the API endpoint
-        # response = requests.get('http://198.199.86.119:5000/api/timeline_post')  
-
-        # # Check if the request was successful (status code 200)
-        # self.assertEqual(response.status_code, 200)
-
-        # # Parse the response JSON, makes JSON data available as a python dictionary stored in the variable 'data'
-        # data = response.json()
-        # print("response.json as stored in 'data'", data)
-
-        # # Ensure 'data' contains the key "timeline_posts"
-        # self.assertIn('timeline_posts', data)
-
-        # # Get the timeline posts from the response
-        # timeline_posts = data['timeline_posts']
-
-        # # Perform assertions on the timeline posts
-        # print("Fetched Timeline Posts:", timeline_posts)
-
-        # self.assertEqual(len(timeline_posts), 2)
-
-        # # Check the first post
-        # self.assertEqual(timeline_posts[0]['id'], 1)
-        # self.assertEqual(timeline_posts[0]['name'], 'John Doe')
-        # self.assertEqual(timeline_posts[0]['email'], 'john@example.com')
-        # self.assertEqual(timeline_posts[0]['content'], "Hello world, I'm John.")
-
-        # # Check the second post
-        # self.assertEqual(timeline_posts[1]['id'], 2)
-        # self.assertEqual(timeline_posts[1]['name'], 'Jane Doe')
-        # self.assertEqual(timeline_posts[1]['email'], 'jane@example.com')
-        # self.assertEqual(timeline_posts[1]['content'], "Hello World, I'm Jane")
-
-
         # Fetch all timeline posts from the database
         timeline_posts = TimelinePost.select()
 
