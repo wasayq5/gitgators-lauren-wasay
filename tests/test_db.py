@@ -26,7 +26,7 @@ class TestTimelinePost(unittest.TestCase):
         assert second_post.id == 2
 
         # Get the timeline posts using the API endpoint
-        response = requests.get('/api/timeline_post')  
+        response = requests.get('http://198.199.86.119:5000/api/timeline_post')  
 
         # Check if the request was successful (status code 200)
         self.assertEqual(response.status_code, 200)
