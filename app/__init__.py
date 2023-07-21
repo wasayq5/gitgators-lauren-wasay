@@ -44,7 +44,7 @@ def post_time_line_post():
     name=request.form['name']
     email=request.form['email']
     content=request.form['content']
-    
+
     if not name:
         return "Invalid name", 400
 
@@ -73,6 +73,16 @@ def timeline():
         name = request.form['name']
         email = request.form['email']
         content = request.form['content']
+
+        if not name:
+            return "Invalid name", 400
+
+        if not email:
+            return "Invalid email", 400
+
+        if not content:
+            return "Invalid content", 400
+            
         timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
     timeline_posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
