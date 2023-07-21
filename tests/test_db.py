@@ -29,9 +29,6 @@ class TestTimelinePost(unittest.TestCase):
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello World, I\'m Jane')
         assert second_post.id == 2
 
-        # Ensure the refreshTimelinePosts function works correctly
-        timeline_posts = refreshTimelinePosts()
-
         # # Get the timeline posts using the API endpoint
         # response = requests.get('http://198.199.86.119:5000/api/timeline_post')  
 
@@ -65,17 +62,21 @@ class TestTimelinePost(unittest.TestCase):
         # self.assertEqual(timeline_posts[1]['email'], 'jane@example.com')
         # self.assertEqual(timeline_posts[1]['content'], "Hello World, I'm Jane")
 
+
+        # Fetch all timeline posts from the database
+        timeline_posts = TimelinePost.select()
+
         # Perform assertions on the timeline posts
         self.assertEqual(len(timeline_posts), 2)
 
         # Check the first post
-        self.assertEqual(timeline_posts[0]['id'], 1)
-        self.assertEqual(timeline_posts[0]['name'], 'John Doe')
-        self.assertEqual(timeline_posts[0]['email'], 'john@example.com')
-        self.assertEqual(timeline_posts[0]['content'], "Hello world, I'm John.")
+        self.assertEqual(timeline_posts[0].id, 1)
+        self.assertEqual(timeline_posts[0].name, 'John Doe')
+        self.assertEqual(timeline_posts[0].email, 'john@example.com')
+        self.assertEqual(timeline_posts[0].content, "Hello world, I'm John.")
 
         # Check the second post
-        self.assertEqual(timeline_posts[1]['id'], 2)
-        self.assertEqual(timeline_posts[1]['name'], 'Jane Doe')
-        self.assertEqual(timeline_posts[1]['email'], 'jane@example.com')
-        self.assertEqual(timeline_posts[1]['content'], "Hello World, I'm Jane.")
+        self.assertEqual(timeline_posts[1].id, 2)
+        self.assertEqual(timeline_posts[1].name, 'Jane Doe')
+        self.assertEqual(timeline_posts[1].email, 'jane@example.com')
+        self.assertEqual(timeline_posts[1].content, "Hello World, I'm Jane.")
