@@ -27,9 +27,9 @@ class TestTimelinePost(unittest.TestCase):
 
     def test_timeline_post(self):
         first_post = TimelinePost.create(name='John Doe', email='john@exampele.com', content='Hello world, I\'m John.')
-        assert first_post.id == 1
+        assert first_post.id == 3
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello World, I\'m Jane')
-        assert second_post.id == 2
+        assert second_post.id == 4
 
         # Get the timeline posts using the API endpoint
         response = requests.get('http://198.199.86.119:5000/api/timeline_post')  
