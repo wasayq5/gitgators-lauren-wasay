@@ -33,6 +33,7 @@ class TestTimelinePost(unittest.TestCase):
 
         # Parse the response JSON, makes JSON data available as a python dictionary stored in the variable 'data'
         data = response.json()
+        print("response.json as stored in 'data'", data)
 
         # Ensure 'data' contains the key "timeline_posts"
         self.assertIn('timeline_posts', data)
@@ -41,6 +42,8 @@ class TestTimelinePost(unittest.TestCase):
         timeline_posts = data['timeline_posts']
 
         # Perform assertions on the timeline posts
+        print("Fetched Timeline Posts:", timeline_posts)
+
         self.assertEqual(len(timeline_posts), 2)
 
         # Check the first post
