@@ -70,8 +70,9 @@ def get_time_line_post():
 
 @app.route('/timeline', methods=['GET', 'POST'])
 def timeline():
+    if request.method == 'POST':
         if not request.form['name']:
-            return "Invalid name"
+        return "Invalid name"
 
         if not request.form['email']:
             return "Invalid email"
