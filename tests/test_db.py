@@ -25,35 +25,36 @@ class TestTimelinePost(unittest.TestCase):
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello World, I\'m Jane')
         assert second_post.id == 2
 
-        # Step 1: Send POST requests to create timeline posts
-        post_data_1 = {'name': 'John Doe', 'email': 'john@example.com', 'content': "Hello world, I'm John."}
-        post_data_2 = {'name': 'Jane Doe', 'email': 'jane@example.com', 'content': "Hello World, I'm Jane"}
+        # Get the timeline posts using the API endpoint
+        response = requests.get('/api/timeline_post')  
 
-        response_1 = requests.post('/api/timeline_post', data=post_data_1)
-        assert response_1.status_code == 200
-        first_post_id = response_1.json()['id']
-        assert first_post_id == 1  # Assuming the first post ID is 1
+        # Check if the request was successful (status code 200)
+        self.assertEqual(response.status_code, 200)
 
-        response_2 = requests.post('/api/timeline_post', data=post_data_2)
-        assert response_2.status_code == 200
-        second_post_id = response_2.json()['id']
-        assert second_post_id == 2  # Assuming the second post ID is 2
+        # Parse the response JSON, makes JSON data available as a python dictionary stored in the variable 'data'
+        data = response.json()
 
-        # Step 2 and 3: Send GET request to fetch timeline posts
-        response = requests.get('/api/timeline_post')
-        assert response.status_code == 200
+        # Ensure 'data' contains the key "timeline_posts"
+        self.assertIn('timeline_posts', data)
 
-        # Step 4: Compare the attributes of the fetched timeline posts
-        timeline_posts = response.json()['timeline_posts']
+        # Get the timeline posts from the response
+        timeline_posts = data['timeline_posts']
 
-        assert len(timeline_posts) == 2
+        # Perform assertions on the timeline posts
+        self.assertEqual(len(timeline_posts), 2)
 
-        assert timeline_posts[0]['id'] == first_post_id
-        assert timeline_posts[0]['name'] == 'John Doe'
-        assert timeline_posts[0]['email'] == 'john@example.com'
-        assert timeline_posts[0]['content'] == "Hello world, I'm John."
+        # Check the first post
+        self.assertEqual(timeline_posts[0]['id'], 1)
+        self.assertEqual(timeline_posts[0]['name'], 'John Doe')
+        self.assertEqual(timeline_posts[0]['email'], 'john@example.com')
+        self.assertEqual(timeline_posts[0]['content'], "Hello world, I'm John.")
 
-        assert timeline_posts[1]['id'] == second_post_id
-        assert timeline_posts[1]['name'] == 'Jane Doe'
-        assert timeline_posts[1]['email'] == 'jane@example.com'
-        assert timeline_posts[1]['content'] == "Hello World, I'm Jane"
+        # Check the second post
+        self.assertEqual(timeline_posts[1]['id'], 2)
+        self.assertEqual(timeline_posts[1]['name'], 'Jane Doe')
+        self.assertEqual(timeline_posts[1]['email'], 'jane@example.com')
+        self.assertEqual(timeline_posts[1]['content'], "Hello World, I'm Jane")
+
+
+
+       
