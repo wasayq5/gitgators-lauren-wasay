@@ -14,10 +14,16 @@ class TestTimelinePost(unittest.TestCase):
         test_db.bind(MODELS, bind_refs=False, bind_backrefs=False)
         test_db.connect()
         test_db.create_tables(MODELS)
+        first_post = TimelinePost.create(name='John Doe', email='john@exampele.com', content='Hello world, I\'m John.')
+        second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello World, I\'m Jane')
 
     def tearDown(self):
         test_db.drop_tables(MODELS)
         test_db.close()
+
+    # def clear_timeline_posts(self):
+    #     # Clear all records from the TimelinePost table
+    #     TimelinePost.delete().execute()
 
     def test_timeline_post(self):
         first_post = TimelinePost.create(name='John Doe', email='john@exampele.com', content='Hello world, I\'m John.')
