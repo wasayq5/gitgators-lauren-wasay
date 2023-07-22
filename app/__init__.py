@@ -41,18 +41,17 @@ def index():
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    content = request.form.get('content')
 
-    name=request.form['name']
-    email=request.form['email']
-    content=request.form['content']
-
-    if not request.form['name']:
+    if not name:
         return "Invalid name", 400
 
-    if not request.form['email']:
+    if not email:
         return "Invalid email", 400
 
-    if not request.form['content']:
+    if not content:
         return "Invalid content", 400
 
 
@@ -73,17 +72,17 @@ def get_time_line_post():
 def timeline():
     if request.method == 'POST':
 
-        name=request.form['name']
-        email=request.form['email']
-        content=request.form['content']
+        name = request.form.get('name')
+        email = request.form.get('email')
+        content = request.form.get('content')
 
-        if not request.form['name']:
+        if not name:
             return "Invalid name", 400
 
-        if not request.form['email']:
+        if not email:
             return "Invalid email", 400
 
-        if not request.form['content']:
+        if not content:
             return "Invalid content", 400
 
         timeline_post = TimelinePost.create(name=name, email=email, content=content)
