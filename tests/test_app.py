@@ -44,7 +44,7 @@ class AppTestCase(unittest.TestCase):
             "email": "john@example.com",
             "content": "This is a test post.",
         }
-        response = self.client.post("/api/timeline_post", json=post_data)
+        response = self.client.post("/api/timeline_post", post_data)
         print("RESPONSE STATUS CODE:")
         print(response.status_code)
         assert response.status_code == 201
