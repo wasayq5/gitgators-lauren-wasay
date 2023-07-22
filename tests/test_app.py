@@ -30,6 +30,8 @@ class AppTestCase(unittest.TestCase):
         assert response.is_json
         json = response.get_json()
         assert "timeline_posts" in json
+        print("len of json[timelineposts]:")
+        print(len(json["timeline_posts"]))
         assert len(json["timeline_posts"]) == 0
         # TODO Add more tests relating to the /api/timeline_post GET and POST apis
         # TODO Add more tests relating to the timeline page
@@ -78,6 +80,8 @@ class AppTestCase(unittest.TestCase):
 
         # POST request with malformed email
         response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "abcxyz", "content": "Hello World, I'm John!"})
+        print("RESPONSE CODE FOR EMISSING EMAIL:")
+        print(response.status_code)
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         assert "Invalid email" in html
