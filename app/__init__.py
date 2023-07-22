@@ -48,7 +48,7 @@ def post_time_line_post():
     if not name:
         return "Invalid name", 400
 
-    if not email:
+    if not email or is_valid_email(email):
         return "Invalid email", 400
 
     if not content:
@@ -79,7 +79,7 @@ def timeline():
         if not name:
             return "Invalid name", 400
 
-        if not email:
+        if not email or is_valid_email(email):
             return "Invalid email", 400
 
         if not content:

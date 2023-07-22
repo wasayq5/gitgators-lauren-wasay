@@ -32,6 +32,8 @@ class AppTestCase(unittest.TestCase):
         assert "timeline_posts" in json
         print("len of json[timelineposts]:")
         print(len(json["timeline_posts"]))
+        print("content of json[timeline_posts]")
+        print(json["timeline_posts"])
         assert len(json["timeline_posts"]) == 0
         # TODO Add more tests relating to the /api/timeline_post GET and POST apis
         # TODO Add more tests relating to the timeline page
