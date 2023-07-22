@@ -45,8 +45,7 @@ class AppTestCase(unittest.TestCase):
             "content": "This is a test post.",
         }
         response = self.client.post("/api/timeline_post", data=post_data)
-        print("RESPONSE STATUS CODE:")
-        print(response.status_code)
+        print("RESPONSE STATUS CODE::")
         assert response.status_code == 200
         assert response.is_json
         json_data = response.get_json()
@@ -60,7 +59,13 @@ class AppTestCase(unittest.TestCase):
 
     def test_malformed_timeline_post(self):
         # POST request missing name
-        response = self.client.post("/api/timeline_post", data={"email": "john@example.com", "content": "Hello World, I'm John!"})
+        post_data = {
+            "email": "john@example.com",
+            "content": "This is a test post.",
+        }
+        response = self.client.post("/api/timeline_post", data=post_data)
+        print("RESPONSE CODE FOR MISSING NAME:")
+        print(response.status_code)
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         print(html)
