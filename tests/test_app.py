@@ -45,7 +45,8 @@ class AppTestCase(unittest.TestCase):
             "content": "This is a test post.",
         }
         response = self.client.post("/api/timeline_post", json=post_data)
-        assert response.status_code == 200
+        print(html)
+        assert response.status_code == 201
         assert response.is_json
         json_data = response.get_json()
         assert "id" in json_data
