@@ -47,15 +47,14 @@ def post_time_line_post():
     content=request.form['content']
 
     if not request.form['name']:
-        return "Invalid name"
+        return "Invalid name", 400
 
     if not request.form['email']:
-        return "Invalid email"
+        return "Invalid email", 400
 
     if not request.form['content']:
-        return "Invalid content"
+        return "Invalid content", 400
 
-    print("past all the invalid statements2")
 
     timeline_post=TimelinePost.create(name=name,email=email,content=content)
 
@@ -79,13 +78,13 @@ def timeline():
         content=request.form['content']
 
         if not request.form['name']:
-            return "Invalid name"
+            return "Invalid name", 400
 
         if not request.form['email']:
-            return "Invalid email"
+            return "Invalid email", 400
 
         if not request.form['content']:
-            return "Invalid content"
+            return "Invalid content", 400
 
         timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
