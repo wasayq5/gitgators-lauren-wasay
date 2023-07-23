@@ -1,4 +1,5 @@
 import os
+import re
 import logging
 import datetime
 from flask import Flask, render_template, request
@@ -47,6 +48,11 @@ class TimelinePost(Model):
 mydb.connect()
 mydb.create_tables([TimelinePost])
 
+def is_valid_email(email):
+    # Use a regular expression to validate the email format
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(email_pattern, email) is not None
+
 @app.route('/')
 def index():
     return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
@@ -83,7 +89,6 @@ def get_time_line_post():
 @app.route('/timeline', methods=['GET', 'POST'])
 def timeline():
     if request.method == 'POST':
-
         name = request.form.get('name')
         email = request.form.get('email')
         content = request.form.get('content')
