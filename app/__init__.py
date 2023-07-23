@@ -6,8 +6,20 @@ from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
+import re
 
 logging.basicConfig(level=logging.INFO)
+
+def is_valid_email(email):
+    # Regular expression pattern to validate an email address
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+
+    # Check if the email matches the pattern
+    if re.match(email_pattern, email):
+        return True
+    else:
+        return False
+
 
 load_dotenv()
 app = Flask(__name__)
@@ -47,19 +59,19 @@ def index():
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    content = request.form.get('content')
 
-    if not request.form['name']:
+    if not name:
         return "Invalid name", 400
 
-    if not request.form['email'] or not is_valid_email(request.form['email']):
+    if not email or not is_valid_email(email):
         return "Invalid email", 400
 
-    if not request.form['content']:
+    if not content:
         return "Invalid content", 400
 
-    name=request.form['name']
-    email=request.form['email']
-    content=request.form['content']
 
     timeline_post=TimelinePost.create(name=name,email=email,content=content)
 
@@ -77,20 +89,22 @@ def get_time_line_post():
 @app.route('/timeline', methods=['GET', 'POST'])
 def timeline():
     if request.method == 'POST':
-        if not request.form['name']:
+        name = request.form.get('name')
+        email = request.form.get('email')
+        content = request.form.get('content')
+
+        if not name:
             return "Invalid name", 400
 
-        if not request.form['email'] or not is_valid_email(request.form['email']):
+        if not email or is_valid_email(email):
             return "Invalid email", 400
 
-        if not request.form['content']:
+        if not content:
             return "Invalid content", 400
 
-        name=request.form['name']
-        email=request.form['email']
-        content=request.form['content']
-
         timeline_post = TimelinePost.create(name=name, email=email, content=content)
+
+        print("past all the invalid statements2")
 
     timeline_posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
 
