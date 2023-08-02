@@ -135,3 +135,6 @@ def hobbies():
         {'type': 'Example hobby', 'description': 'Example description', 'image': './img/hobbies/hobby_image1.jpeg'}
     ]
     return render_template('hobbies.html', title="MLH Fellow", url=os.getenv("URL"), hobby_experiences=hobby_experiences)
+
+if __name__=='__main__':
+    app.run(host='127.0.0.1', debug=True)
