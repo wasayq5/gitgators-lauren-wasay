@@ -136,5 +136,5 @@ def hobbies():
     ]
     return render_template('hobbies.html', title="MLH Fellow", url=os.getenv("URL"), hobby_experiences=hobby_experiences)
 
-# if __name__=='__main__':
-#     app.run(host='198.199.86.119', debug=True)
+if __name__=='__main__':
+    app.run(host='198.199.86.119', debug=True)
