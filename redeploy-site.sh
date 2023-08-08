@@ -6,12 +6,14 @@ systemctl stop myportfolio.service
 echo "Server Killed."
 echo "---------------------------------------------"
 
-# echo "navigating to project directory"
+sleep 5
 
-# cd gitgators-lauren-wasay/
+echo "navigating to project directory"
 
-# echo "Done navigating to project directory."
-# echo "---------------------------------------------"
+cd gitgators-lauren-wasay/
+
+echo "Done navigating to project directory."
+echo "---------------------------------------------"
 
 echo "running git fetch"
 
