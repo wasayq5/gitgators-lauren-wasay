@@ -8,12 +8,12 @@ echo "---------------------------------------------"
 
 sleep 5
 
-echo "navigating to project directory"
+# echo "navigating to project directory"
 
-cd gitgators-lauren-wasay/
+# cd gitgators-lauren-wasay/
 
-echo "Done navigating to project directory."
-echo "---------------------------------------------"
+# echo "Done navigating to project directory."
+# echo "---------------------------------------------"
 
 echo "running git fetch"
 
@@ -48,5 +48,6 @@ echo "---------------------------------------------"
 
 echo "Restarting myportfolio service"
 systemctl start myportfolio.service
+systemctl enable myportfolio.service
 echo "myportfolio service restarted."
 echo "---------------------------------------------"
