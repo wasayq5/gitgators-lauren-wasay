@@ -1,12 +1,13 @@
 #!/usr/bin/bash
-echo "Killing server"
+# echo "Killing server"
 
-systemctl stop myportfolio.service
+# systemctl stop myportfolio.service
 
-echo "Server Killed."
-echo "---------------------------------------------"
 
-sleep 5
+# echo "Server Killed."
+# echo "---------------------------------------------"
+
+# sleep 5
 
 # echo "navigating to project directory"
 
@@ -47,7 +48,9 @@ echo "Dependencies Installed."
 echo "---------------------------------------------"
 
 echo "Restarting myportfolio service"
-systemctl start myportfolio.service
-systemctl enable myportfolio.service
+# systemctl start myportfolio.service
+# systemctl enable myportfolio.service
+systemctl daemon reload
+systemctl restart myportfolio.service
 echo "myportfolio service restarted."
 echo "---------------------------------------------"
