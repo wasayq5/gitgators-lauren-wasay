@@ -50,7 +50,7 @@ echo "---------------------------------------------"
 echo "Restarting myportfolio service"
 # systemctl start myportfolio.service
 # systemctl enable myportfolio.service
-systemctl daemon reload
+systemctl daemon-reload
 systemctl restart myportfolio.service
 echo "myportfolio service restarted."
 echo "---------------------------------------------"
