@@ -45,8 +45,9 @@ class TimelinePost(Model):
     class Meta:
         database=mydb
 
-# mydb.connect()
-# mydb.create_tables([TimelinePost])
+mydb.connect()
+
+mydb.create_tables([TimelinePost])
 
 def is_valid_email(email):
     # Use a regular expression to validate the email format
