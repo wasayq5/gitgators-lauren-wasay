@@ -25,7 +25,7 @@ echo "---------------------------------------------"
 
 echo "Activating virtual env"
 
-source myenv/bin/activate
+source python3-virtualenv/bin/activate
 
 echo "Activated virtual env"
 echo "---------------------------------------------"
