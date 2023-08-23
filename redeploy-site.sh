@@ -23,34 +23,16 @@ git fetch && git reset origin/main --hard
 echo "Ran git fetch."
 echo "---------------------------------------------"
 
-echo "Activating virtual env"
+echo "running docker compose down"
 
-source python3-virtualenv/bin/activate
+docker compose -f docker-compose.prod.yml down
 
-echo "Activated virtual env"
+echo "ran docker compose down"
 echo "---------------------------------------------"
 
-echo "Installing dependencies."
+echo "running docker compose up"
 
-pip install click==8.0.1
-pip install cryptography==37.0.2
-pip install Flask==2.0.1
-pip install itsdangerous==2.0.1
-pip install Jinja2==3.0.1
-pip install MarkupSafe==2.0.1
-pip install peewee==3.14.10
-pip install pycparser==2.21
-pip install PyMySQL==1.0.2
-pip install python-dotenv==0.17.1
-pip install Werkzeug==2.0.1
+docker compose -f docker-compose.prod.yml up -d --build
 
-echo "Dependencies Installed."
-echo "---------------------------------------------"
-
-echo "Restarting myportfolio service"
-# systemctl start myportfolio.service
-# systemctl enable myportfolio.service
-systemctl daemon-reload
-systemctl restart myportfolio.service
-echo "myportfolio service restarted."
+echo "ran docker compose up"
 echo "---------------------------------------------"
