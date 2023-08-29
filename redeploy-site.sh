@@ -1,13 +1,4 @@
 #!/usr/bin/bash
-# echo "Killing server"
-
-# systemctl stop myportfolio.service
-
-
-# echo "Server Killed."
-# echo "---------------------------------------------"
-
-# sleep 5
 
 echo "navigating to project directory"
 
