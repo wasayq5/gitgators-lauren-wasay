@@ -28,5 +28,8 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_IP: ${{ secrets.SSH_IP }}
 
+      - name: Give Permissions to redeploy-site.sh
+        run: ssh my-vps 'chmod +x ~/gitgators-lauren-wasay/redeploy-site.sh'
+
       - name: Deploy my site
         run: ssh my-vps '~/gitgators-lauren-wasay/redeploy-site.sh'
