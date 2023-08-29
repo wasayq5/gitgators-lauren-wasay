@@ -29,4 +29,4 @@ jobs:
           SSH_IP: ${{ secrets.SSH_IP }}
 
       - name: Deploy site
-        run: ssh my-vm '~/gitgators-lauren-wasay/redeploy-site.sh'
+        run: ssh my-vps '~/gitgators-lauren-wasay/redeploy-site.sh'
