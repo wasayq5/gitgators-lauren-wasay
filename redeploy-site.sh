@@ -13,7 +13,7 @@ echo "navigating to project directory"
 
 cd ~/gitgators-lauren-wasay/
 
-echo "Done navigating to project directory."
+echo "Navigated to project directory."
 echo "---------------------------------------------"
 
 echo "running git fetch"
