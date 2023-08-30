@@ -11,7 +11,7 @@ echo "running git fetch"
 
 git fetch && git reset origin/main --hard
 
-echo "Ran git fetch."
+echo " Ran git fetch."
 echo "---------------------------------------------"
 
 echo "running docker compose down"
