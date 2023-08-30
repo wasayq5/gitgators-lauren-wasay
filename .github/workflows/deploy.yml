@@ -31,5 +31,5 @@ jobs:
       - name: Give Permissions to redeploy-site.sh
         run: ssh my-vps 'chmod +x ~/gitgators-lauren-wasay/redeploy-site.sh'
 
-      - name: Deploy my site
+      - name: Deploy my site!
         run: ssh my-vps '~/gitgators-lauren-wasay/redeploy-site.sh'
